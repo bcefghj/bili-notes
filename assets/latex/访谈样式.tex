@@ -1,0 +1,67 @@
+% Base class: ElegantNote (LPPL 1.3c). The accompanying license is retained.
+\documentclass[lang=cn,device=normal,chinesefont=nofont,12pt,blue,bibtex,bibstyle=numeric,citestyle=numeric]{elegantnote}
+\input{episode-config}
+\input{cjk-fonts}
+\geometry{a4paper,left=20mm,right=20mm,top=21mm,bottom=20mm,headheight=14pt,headsep=5mm,footskip=9mm}
+\usepackage{graphicx,booktabs,tabularx,ragged2e,fancyhdr,bookmark}
+\usepackage[skins]{tcolorbox}
+\graphicspath{{assets/}}
+\definecolor{ink}{HTML}{182832}
+\definecolor{deep}{HTML}{142D35}
+\definecolor{jade}{HTML}{176456}
+\definecolor{rust}{HTML}{91412A}
+\definecolor{gold}{HTML}{78521D}
+\definecolor{dim}{HTML}{51636A}
+\definecolor{line}{HTML}{C9D5D3}
+\hypersetup{colorlinks=true,linkcolor=jade,urlcolor=rust,pdflang={zh-CN},pdfauthor={视频学习}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{7pt}
+\setlength{\emergencystretch}{2em}
+\linespread{1.15}
+\raggedbottom
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\sffamily\footnotesize\color{dim}\episodeseries{} \enspace / \enspace \episodetitle}
+\fancyhead[R]{\sffamily\footnotesize\color{dim}\edition}
+\fancyfoot[L]{\sffamily\footnotesize\hyperlink{home}{全片索引}\enspace · \enspace\href{https://www.bilibili.com/video/\episodebvid/}{Bilibili 原片}}
+\fancyfoot[R]{\sffamily\footnotesize\thepage}
+\renewcommand{\headrulewidth}{.3pt}
+\newcommand{\watch}[2]{\href{https://www.bilibili.com/video/\episodebvid/?t=#1}{#2}}
+\newcommand{\markpage}[2]{\hypertarget{#1}{}\pdfbookmark[0]{#2}{outline-#1}}
+\newcommand{\smallnote}[1]{{\small\color{dim}#1\par}}
+\newcommand{\ruleline}{\par\noindent{\color{line}\rule{\linewidth}{.45pt}}\par}
+\newcommand{\hero}[3]{%
+  \begin{tcolorbox}[colback=deep,colframe=deep,colupper=white,boxrule=0pt,arc=0pt,left=5mm,right=5mm,top=4mm,bottom=4mm,before skip=0pt,after skip=4mm]
+  {\sffamily\small #1\par}\vspace{1mm}
+  {\sffamily\bfseries\fontsize{32}{36}\selectfont #2\par}
+  {\sffamily\large #3\par}
+  \end{tcolorbox}}
+\newcommand{\pagehead}[2]{%
+  {\sffamily\small\color{jade}\bfseries #1\par}
+  {\sffamily\bfseries\fontsize{25}{30}\selectfont #2\par}
+  \ruleline}
+\newcommand{\topic}[3]{%
+  \par\medskip
+  {\sffamily\bfseries\color{jade}\large #3\hfill {\normalsize\watch{#1}{#2}}\par}}
+\newcommand{\framephoto}[4]{%
+  \par\noindent{\centering\includegraphics[width=#1]{#2}\par}
+  {\sffamily\small\color{dim}#3\hfill\watch{#4}{\frametime}\par}}
+\newtcolorbox{casebox}[2]{enhanced,boxrule=0pt,arc=0pt,colback=#1!7!white,colframe=#1,
+  borderline west={2pt}{0pt}{#1},left=4mm,right=4mm,top=3mm,bottom=3mm,
+  coltitle=#1,colbacktitle=#1!7!white,fonttitle=\sffamily\bfseries,
+  toptitle=2.5mm,bottomtitle=0mm,title={#2},before skip=3mm,after skip=3mm}
+\newcommand{\duo}[2]{%
+  \par\noindent\begin{minipage}[t]{.485\linewidth}\vspace{0pt}#1\end{minipage}\hfill
+  \begin{minipage}[t]{.485\linewidth}\vspace{0pt}#2\end{minipage}\par}
+\newcommand{\trio}[3]{%
+  \par\noindent\begin{minipage}[t]{.32\linewidth}\vspace{0pt}#1\end{minipage}\hfill
+  \begin{minipage}[t]{.32\linewidth}\vspace{0pt}#2\end{minipage}\hfill
+  \begin{minipage}[t]{.32\linewidth}\vspace{0pt}#3\end{minipage}\par}
+\newcommand{\indexrow}[4]{\watch{#1}{#2}&\hyperlink{#3}{\sffamily\bfseries #4}\\}
+\newcommand{\shortrow}[3]{\watch{#1}{#2}&\sffamily\bfseries #3\\}
+\newcommand{\sourcebar}{%
+  \ruleline
+  \smallnote{\episodesourcelinks}}
+\newcommand{\nextroute}[3]{%
+  \ruleline
+  \smallnote{下一章 \watch{#1}{#2}\quad\hyperlink{#3}{继续阅读}\hfill\hyperlink{home}{返回目录}}}

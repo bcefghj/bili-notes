@@ -1,0 +1,26 @@
+% Preserve the accepted macOS fonts; use installed CJK fonts on other hosts.
+\IfFileExists{/System/Library/Fonts/Supplemental/Songti.ttc}{%
+  \setCJKmainfont[Path=/System/Library/Fonts/Supplemental/,FontIndex=6,BoldFont=Songti.ttc,BoldFeatures={FontIndex=1}]{Songti.ttc}
+  \setCJKsansfont[Path=/System/Library/Fonts/,FontIndex=1,AutoFakeBold=2]{STHeiti Medium.ttc}
+  \setCJKfamilyfont{zhkai}[Path=/System/Library/Fonts/Supplemental/,FontIndex=6]{Songti.ttc}
+  \setCJKfamilyfont{zhhei}[Path=/System/Library/Fonts/,FontIndex=1]{STHeiti Medium.ttc}
+  \setCJKfamilyfont{zhsong}[Path=/System/Library/Fonts/Supplemental/,FontIndex=6]{Songti.ttc}
+}{%
+  \IfFontExistsTF{Noto Serif CJK SC}{%
+    \setCJKmainfont{Noto Serif CJK SC}
+    \setCJKsansfont{Noto Sans CJK SC}
+    \setCJKfamilyfont{zhkai}{Noto Serif CJK SC}
+    \setCJKfamilyfont{zhhei}{Noto Sans CJK SC}
+    \setCJKfamilyfont{zhsong}{Noto Serif CJK SC}
+  }{%
+    \IfFontExistsTF{Source Han Serif SC}{%
+      \setCJKmainfont{Source Han Serif SC}
+      \setCJKsansfont{Source Han Sans SC}
+      \setCJKfamilyfont{zhkai}{Source Han Serif SC}
+      \setCJKfamilyfont{zhhei}{Source Han Sans SC}
+      \setCJKfamilyfont{zhsong}{Source Han Serif SC}
+    }{%
+      \ClassError{interview-video-notes}{No supported CJK font installed}{Install Noto Serif CJK SC and Noto Sans CJK SC, or edit cjk-fonts.tex.}
+    }
+  }
+}
