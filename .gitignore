@@ -1,0 +1,14 @@
+.DS_Store
+__pycache__/
+*.pyc
+.build-*/
+work/
+output/
+examples/
+*.m4a
+*.mp3
+*.mp4
+*.bundle
+*.zip
+.env
+.env.*
