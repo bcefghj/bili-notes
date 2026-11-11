@@ -1,0 +1,9 @@
+name: asr-mlx
+channels:
+  - conda-forge
+dependencies:
+  - python=3.11
+  - ffmpeg
+  - pip
+  - pip:
+      - mlx-whisper==0.4.3
