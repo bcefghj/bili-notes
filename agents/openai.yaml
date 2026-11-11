@@ -1,0 +1,4 @@
+interface:
+  display_name: "B站笔记"
+  short_description: "把访谈视频整理成带时间的纯文字稿、图文 LaTeX 伴读和几页回顾 PDF"
+  default_prompt: "请用 $bili-notes 处理这期访谈，沿用已认可版本的排版和时间索引标准。"
